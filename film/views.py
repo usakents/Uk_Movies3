@@ -37,9 +37,11 @@ def manage_movie_detail(request,movie_id):
     context={
      "movie_detail":movie_detail
     }  
-    return render(request,"preview.html",context)
-# def manage_movie_detail(request, movie_id):
-#     movie_detail = Movies.objects.get(id=movie_id)
-# context={
-#     'movie_detai':  movie_detai.movie_id
-# }
+    return render(request,"movie_preview.html",context)
+
+def manage_serie_detail(request,serie_id):
+    serie_detail=get_serie(serie_id)
+    context={
+        "serie_detail":serie_detail
+    }
+    return render(request,"serie_preview.html",context)

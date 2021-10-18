@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.deletion import CASCADE
 from django.db.models.fields.files import ImageField
 
 # Create your models here.
@@ -35,8 +36,7 @@ class Series(models.Model):
     serie_general=models.CharField(max_length=300,null=False)
     serie_VJ=models.CharField(max_length=200)
     serie_cost=models.CharField(max_length=200)
-    serie_season=models.CharField(max_length=200)
-    serie_episode=models.CharField(max_length=200,null=False)
+  
     STATUS1_TYPE_CHOICES=[
       
         ('New','New'),
@@ -51,7 +51,21 @@ class Series(models.Model):
     serie_status2=models.CharField(max_length=200,choices=STATUS2_TYPE_CHOICES)
     serie_release_date=models.DateField(auto_now_add=True)
     serie_image=models.ImageField(upload_to='pic')
-    serie_video=models.CharField(max_length=200,null=False)
+    
+
+class Season(models.Model):
+    season_name=models.CharField(max_length=200)
+    serie=models.ForeignKey(Series,on_delete=CASCADE)
+    release_date=models.DateField()
+    description=models.CharField(max_length=1000)
+
+class Episode(models.Model):
+    episode_name=models.CharField(max_length=200)
+    season=models.ForeignKey(Season,on_delete=CASCADE)
+    release_date=models.DateField()
+    description=models.CharField(max_length=1000,null=True, blank=True)
+    episode_video=models.CharField(max_length=200,null=False)
+
 
 class Carousel(models.Model):
     image_name=models.CharField(max_length=200)

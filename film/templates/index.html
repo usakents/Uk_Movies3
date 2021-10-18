@@ -157,14 +157,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	        <div class="section group">
 				{% for get_moviys in get_moviys %}
 				<div class="grid_1_of_5 images_1_of_5">
-					<a href="{% url 'mov_detail' request.id %}"><img src="{{ get_moviys.movie_image.url }}" alt=""  width="100px" height="100px"/></a>
-					 <h2><a href="{% url 'mov_detail' request.id %}">{{get_moviys.movie_title}}</a></h2>
+					<a href="{% url 'mov_detail' get_moviys.id %}"><img src="{{ get_moviys.movie_image.url }}" alt=""  width="100px" height="100px"/></a>
+					 <h2><a href="{% url 'mov_detail' get_moviys.id %}">{{get_moviys.movie_title}}</a></h2>
 					<div class="price-details">
 				       <div class="price-number">
 							<p><span class="rupees">{{get_moviys.movie_cost}}</span></p>
 					    </div>
 					       		<div class="add-cart">								
-									<h4><a href="{% url 'mov_detail' request.id %}">{{get_moviys.movie_VJ}}</a></h4>
+									<h4><a href="{% url 'mov_detail' get_moviys.id %}">{{get_moviys.movie_VJ}}</a></h4>
 							     </div>
 							 <div class="clear"></div>
 					</div>
@@ -189,7 +189,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="section group">
 				{% for get_seriys in get_seriys %}
 				<div class="grid_1_of_5 images_1_of_5">
-					 <a href="preview.html"><img src="{{ get_seriys.serie_image.url }}" alt="" /></a>
+					 <a href="{% url 'seri_detail' get_seriys.id %}"><img src="{{ get_seriys.serie_image.url }}" alt="" /></a>
 					 <h2><a href="preview.html">{{get_seriys.serie_title}}</a></h2>
 					<div class="price-details">
 				       <div class="price-number">
