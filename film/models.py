@@ -28,7 +28,7 @@ class Movies(models.Model):
     movie_status2=models.CharField(max_length=200,choices=STATUS2_TYPE_CHOICES)
     movie_release_date=models.DateField(auto_now_add=True)
     movie_image=models.ImageField(upload_to='pic')
-    movie_video=models.CharField(max_length=200,null=False)
+    movie_video=models.FileField(upload_to='m_videos')
 
 class Series(models.Model):
     serie_title=models.CharField(max_length=200,null=False)
@@ -64,7 +64,7 @@ class Episode(models.Model):
     season=models.ForeignKey(Season,on_delete=CASCADE)
     release_date=models.DateField()
     description=models.CharField(max_length=1000,null=True, blank=True)
-    episode_video=models.CharField(max_length=200,null=False)
+    episode_video=models.FileField(upload_to='s_videos')
 
 
 class Carousel(models.Model):

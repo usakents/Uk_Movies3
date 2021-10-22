@@ -6,10 +6,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 {% load static %}
-{% load crispy_forms_tags %}
+
 <!DOCTYPE HTML>
 <head> 
 	<link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet" />
+	
 <title>Free Movies Store Website Template | Preview :: w3layouts</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -107,7 +108,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				  </div>
 				<div class="desc span_3_of_2">
 					<h2>Wrath of the Titans </h2>
-					<p><video src="{{ movie_detail.movie_video}}"></video></p>
+					
 					<p>  <video
 						id="my-video"
 						class="video-js"
@@ -118,16 +119,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						poster="MY_VIDEO_POSTER.jpg"
 						data-setup="{}"
 					  >
-						<source src="file:///D:/CONVERTED%20MP4%20MOVIES/Malignant%20mp4/VTS_02_1.mp4" type="video/mp4" />
-						
-						<p class="vjs-no-js">
-						  To view this video please enable JavaScript, and consider upgrading to a
-						  web browser that
-						  <a href="https://videojs.com/html5-video-support/" target="_blank"
-							>supports HTML5 video</a
-						  >
-						</p>
-					  </video></p>
+						<source src="{{ movie_detail.movie_video.url }}" type="video/mp4" />
+						</video></p>
+					 
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>					
 					<div class="price">
 						<p>Price: <span>$500</span></p>

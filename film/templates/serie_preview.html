@@ -140,9 +140,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	   </div>
    </div>
 				<div class="rightsidebar span_3_of_1 sidebar">   
-					<h2>Specials</h2>
+					<!-- <h2>Specials</h2> -->
+					
+					<div class="container">
 					 	<div class="special_movies">
-					 	   <div class="movie_poster">
+							<div class="panel-group" id="accordion">
+								<div class="panel panel-default">
+								  <div class="panel-heading">
+									<h4 class="panel-title">
+									  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+									</h4>
+								  </div>
+								  
+								  <div>
+									<div class="panel-body"></div>
+								  </div>
+								  
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading">
+								  <h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
+								  </h4>
+								</div>
+								<div id="collapse2" class="panel-collapse collapse">
+								  <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+								  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+								  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+								</div>
+							  </div>
+						 </div>
+						       
+					</div>
+						 <!-- <div class="movie_poster">
 					 		  <a href="preview.html"><img src="{% static 'images/end-game.jpg' %}" alt="" /></a>
 					 		 </div>
 					 		   <div class="movie_desc">
@@ -151,19 +183,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								     <span><a href="#">Add to Cart</a></span>
 								 </div>
 								<div class="clear"></div>
-					 		</div>	
+					 		</div>	 -->
+							 {%if get_serie_ids %}
 					 		<div class="special_movies">
 					 	   <div class="movie_poster">
-					 		  <a href="preview.html"><img src="{% static 'images/Coraline.jpg' %}" alt="" /></a>
+							{% for get_serie_ids in get_serie_ids %}
+					 		  <!-- <a href="preview.html"><img src="{% static 'images/Coraline.jpg' %}" alt="" /></a> -->
 					 		 </div>
 					 		   <div class="movie_desc">
-							    <h3><a href="preview.html">Coraline</a></h3>
+							    <h3><a href="preview.html">{{ season_detail.season_name }}</a></h3>
 								   <p><span>$620.87</span> &nbsp; $500.35</p>
 								     <span><a href="#">Add to Cart</a></span>
 								 </div>
 								<div class="clear"></div>
-					 		</div>	
-					 		<div class="special_movies">
+					 		</div>
+					          {% endfor %} 	
+							  {%else%}
+							  <div class="card-body">
+							  <h4>No Data available</h4>
+							  </div>
+						  {%endif%}
+					 	<div class="special_movies">
 					 	   <div class="movie_poster">
 					 		  <a href="preview.html"><img src="{% static 'images/Eclipse.jpg' %}" alt="" /></a>
 					 		 </div>
@@ -199,6 +239,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
  					   </div>
  		 		 </div>
    	 		</div>
+				
+						 
         </div>
    <div class="footer">
    	  <div class="wrap">	

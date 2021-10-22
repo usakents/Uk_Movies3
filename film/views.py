@@ -7,7 +7,7 @@ from .form import Register_userForm
 from .movie_selector import(get_movie,get_movies)
 from .category_selector import(get_category,get_categ)
 from .carousel_selector import(get_carousel,get_carous)
-from.serie_selector import(get_series,get_serie)
+from.serie_selector import(get_series,get_serie,get_season_in_serie)
 # Create your views here.
 
 def manage_movie(request):
@@ -15,6 +15,7 @@ def manage_movie(request):
     get_categorys=get_category()
     get_carousels=get_carousel()
     get_seriys=get_series()
+   
     # Registeruser = Register_userForm()
     # if request.method == "POST":
     #     Registeruser = Register_userForm(request.POST,request.FILES)
@@ -41,7 +42,17 @@ def manage_movie_detail(request,movie_id):
 
 def manage_serie_detail(request,serie_id):
     serie_detail=get_serie(serie_id)
+    
     context={
         "serie_detail":serie_detail
+       
     }
     return render(request,"serie_preview.html",context)
+def manage_season_in_serie(request,season):
+    get_serie_ids=get_season_in_serie(season)
+    context={
+        "get_serie_ids":get_serie_ids
+    }
+
+
+      
