@@ -6,9 +6,12 @@ def get_series():
 def get_serie(serie_id):
     return Series.objects.get(pk=serie_id)
 
-def get_season_in_serie(season):
-    return Season.objects.filter(season=season)
+def get_season_in_serie(serie):
+    return Season.objects.filter(serie=serie)
+
+def get_season(season_id):
+    return Season.objects.get(pk=season_id)
    
-def get_episode_in_season(season_id):
-    pass   
+def get_episode_in_season(season):
+    return Episode.objects.filter(season=season)
    
