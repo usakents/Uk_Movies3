@@ -7,7 +7,7 @@ from .form import Register_userForm
 from .movie_selector import(get_movie,get_movies)
 from .category_selector import(get_category,get_categ)
 from .carousel_selector import(get_carousel,get_carous)
-from.serie_selector import(get_series,get_serie,get_season_in_serie)
+from.serie_selector import(get_series,get_serie,get_season_in_serie,get_episode_in_season,get_season)
 # Create your views here.
 
 def manage_movie(request):
@@ -48,10 +48,18 @@ def manage_serie_detail(request,serie_id):
        
     }
     return render(request,"serie_preview.html",context)
-def manage_season_in_serie(request,season):
-    get_serie_ids=get_season_in_serie(season)
+def manage_season_in_serie(request,serie_id):
+    serie = get_serie(serie_id)
+    serie_seasons = get_season_in_serie(serie)
     context={
-        "get_serie_ids":get_serie_ids
+        "serie_seasons":serie_seasons
+    }
+
+def manage_episode_in_season(request,season_id):
+    season = get_season(season_id)
+    episode_season = get_episode_in_season(season)
+    context={
+        "episode_season":episode_season
     }
 
 

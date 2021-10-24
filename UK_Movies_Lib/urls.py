@@ -28,7 +28,7 @@ urlpatterns = [
     path('',views.manage_movie,name="movie"),
     path('mov_details/<int:movie_id>/',views.manage_movie_detail,name='mov_detail'),
     path('seri_details/<int:serie_id>/',views.manage_serie_detail,name='seri_detail'),
-     path('season_details/<int:season>/',views.manage_season_in_serie,name='season_detail'),
+    #  path('season_details/<int:season>/',views.manage_season_in_serie,name='season_detail'),
     path('admin/', admin.site.urls),
     
 ]
