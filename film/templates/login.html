@@ -4,21 +4,15 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-{% load static %}
-{% load crispy_forms_tags %}
-<!DOCTYPE HTML>
+<!DOCTYPE HTML>  
 <head>
-<title>Free Movies Store Website Template | Preview :: w3layouts</title>
+<title>Free Movies Store Website Template | Contact :: w3layouts</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<link href=" {% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
 <script type="text/javascript" src="{% static 'js/jquery-1.9.0.min.js' %}"></script> 
 <script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="header">
@@ -26,7 +20,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="wrap">
 				<div class="nav_list">
 					<ul>
-						<li><a href="{% url 'movie' %}">Home</a></li>
+						<li><a href="index.html">Home</a></li>
 						<li><a href="contact.html">Sitemap</a></li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
@@ -93,83 +87,58 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   		    </div>     				
    		</div>
    </div>
-   <div class="main">
-   	 <div class="wrap">
-   	 	<div class="content_top">
+ <div class="main">
+ 	<div class="wrap">
+     <div class="content">
+     	<div class="content_top">
     		<div class="back-links">
-    		<p><a href="index.html">Home</a> &gt;&gt;&gt;&gt; <a href="#" class="active">English</a></p>
+    		<p><a href="index.html">Home</a> &gt;&gt;&gt;&gt; <a href="#" class="active">Contact</a></p>
     	    </div>
     		<div class="clear"></div>
     	</div>
-   	 	<div class="section group">
-				<div class="cont-desc span_1_of_2">
-				  <div class="product-details">				
-					<div class="grid images_3_of_2">
-						<img src="{{ serie_detail.serie_image.url }}" alt="" />
+    	<div class="section group">
+				<div class="col span_2_of_3">
+				  <div class="contact-form">
+				  	<h2>Contact Us</h2>
+					    <form method="post" action="contact-post.html">
+					    	<div>
+						    	<span><label>UserName</label></span>
+						    	<span><input name="userName" type="text" class="textbox" ></span>
+						    </div>
+						    <div>
+						    	<span><label>Password</label></span>
+						    	<span><input name="userEmail" type="password" class="textbox"></span>
+						    </div>
+						  
+						  
+						   <div>
+						   		<span><input type="submit" value="Submit"  class="mybutton"></span>
+						  </div>
+					    </form>
 				  </div>
-				<div class="desc span_3_of_2">
-					<h2>Wrath of the Titans </h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>					
-					<div class="price">
-						<p>Price: <span>$500</span></p>
-					</div>
-					<div class="available">
-						<ul>
-						  <li><span>Model:</span> &nbsp; Model 1</li>
-						  <li><span>Shipping Weight:</span>&nbsp; 5lbs</li>
-						  <li><span>Units in Stock:</span>&nbsp; 566</li>
-					    </ul>
-					</div>
-				<div class="share-desc">
-					<div class="share">
-						<p>Number of units :</p><input class="text_box" type="text">				
-					</div>
-					<div class="button"><span><a href="#">Add to Cart</a></span></div>					
-					<div class="clear"></div>
-				</div>
-				 <div class="wish-list">
-				 	<ul>
-				 		<li class="wish"><a href="#">Add to Wishlist</a></li>
-				 	    <li class="compare"><a href="#">Add to Compare</a></li>
-				 	</ul>
+  				</div>
+				<div class="col span_1_of_3">
+					<div class="contact_info">
+    	 				<h2>Find Us Here</h2>
+					    	  <div class="map">
+							   	    <iframe width="100%" height="175" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe><br><small><a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265" style="color:#888;text-align:left;font-size:0.85em">View Larger Map</a></small>
+							  </div>
+      				</div>
+      			<div class="company_address">
+				     	<h2>Information :</h2>
+						    	<p>500 Lorem Ipsum Dolor Sit,</p>
+						   		<p>22-56-2-9 Sit Amet, Lorem,</p>
+						   		<p>USA</p>
+				   		<p>Phone:(00) 222 666 444</p>
+				   		<p>Fax: (000) 000 00 00 0</p>
+				 	 	<p>Email: <span><a href="#">info(at)mycompany.com</a></span></p>
+				   		<p>Follow on: <span><a href="#">Facebook</a></span>, <span><a href="#">Twitter</a></span></p>
+				   </div>
 				 </div>
-			</div>
-			<div class="clear"></div>
-		  </div>
-		<div class="product_desc">	
-			 <h2>Details :</h2>
-			   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-	           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-	   </div>
-   </div>
-				<div class="rightsidebar span_3_of_1 sidebar">
-					<h2>Specials</h2>
-					 	<div class="special_movies">
-					 	   <div class="movie_poster">
-							<p>
-								<ul class="list-group">
-									{%if serie_detail.season_set.all %}
-									{% for season in serie_detail.season_set.all %}
-									<li class="list-group-item active">{{ season.season_name }}</li>
-									{% for episode in season.episode_set.all %}
-									<li class="list-group-item">{{ episode.episode_name }}</li>
-									{% endfor %} 
-									{% endfor %}
-									{%else%}
-								  <div class="card-body">
-									<h4>No Data available</h4>
-									</div>
-									 {%endif%}  
-									
-								  </ul>
-							  </p>
-					 		</div>	
-					 		
-					 	  		 
- 					   </div>
- 		 		 </div>
-   	 		</div>
-        </div>
+			  </div>		
+         </div> 
+    </div>
+ </div>
    <div class="footer">
    	  <div class="wrap">	
 	     <div class="section group">
@@ -226,7 +195,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		   </div>			
         </div>
     </div>
-   <script type="text/javascript">
+    <script type="text/javascript">
 		$(document).ready(function() {			
 			$().UItoTop({ easingType: 'easeOutQuart' });
 			
