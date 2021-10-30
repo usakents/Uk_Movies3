@@ -111,22 +111,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     	<div class="section group">
 				<div class="col span_2_of_3">
 				  <div class="contact-form">
-				  	<h2>Contact Us</h2>
-					    <form method="post" action="contact-post.html">
-					    	<div>
-						    	<span><label>UserName</label></span>
-						    	<span><input name="userName" type="text" class="textbox" ></span>
-						    </div>
-						    <div>
-						    	<span><label>Password</label></span>
-						    	<span><input name="userEmail" type="password" class="textbox"></span>
-						    </div>
-						  
-						  
-						   <div>
-						   		<span><input type="submit" value="Submit"  class="mybutton"></span>
-						  </div>
-					    </form>
+					<h1>Login</h1>
+					<form method="POST">
+					  {% csrf_token %}
+					  {{ login_form|crispy }}
+					  <button class="btn btn-default" type="submit">Login</button>
+					</form>
+					<p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
 				  </div>
   				</div>
 				<div class="col span_1_of_3">
