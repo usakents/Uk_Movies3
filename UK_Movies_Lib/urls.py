@@ -30,6 +30,8 @@ urlpatterns = [
     path('seri_details/<int:serie_id>/',views.manage_serie_detail,name='seri_detail'),
     #  path('season_details/<int:season>/',views.manage_season_in_serie,name='season_detail'),
     path('admin/', admin.site.urls),
+    path("register", views.register_request, name="register"),
+    path("login", views.login_request, name="login")
     
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

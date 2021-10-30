@@ -1,9 +1,11 @@
 from django.http import request
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib import messages
+from django.contrib.auth.models import User,auth
 from.models import(Movies)
 
-from .form import Register_userForm
+from .form import NewUserForm
+from django.contrib.auth import login
 from .movie_selector import(get_movie,get_movies)
 from .category_selector import(get_category,get_categ)
 from .carousel_selector import(get_carousel,get_carous)
@@ -62,5 +64,31 @@ def manage_episode_in_season(request,season_id):
         "episode_season":episode_season
     }
 
+def register_request(request):
+	if request.method == "POST":
+		form =NewUserForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			login(request, user)
+			messages.success(request, "Registration successful." )
+			return redirect("movie")
+		messages.error(request, "Unsuccessful registration. Invalid information.")
+	form = NewUserForm()
+	return render (request=request, template_name="register.html", context={"register_form":form})
+
+def login_request(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username,password=password)
+        if user is not None:
+            auth.login(request,user)
+            return redirect('/')
+        else:
+            messages.info(request,'Invalid Credentials')
+            return redirect('login')
+    
+    else:
+        return render (request,'login.html')  
 
       

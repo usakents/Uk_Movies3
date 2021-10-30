@@ -34,14 +34,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<ul>
 							<li><a href="contact.html">Register</a></li>
 							<li><a href="contact.html">Login</a></li>
-							<form method="POST">
-								{% csrf_token %}
-								{{ login_form|crispy }}
-								<button class="btn btn-primary" type="submit">Login</button>
-							  </form>
-							  <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
-							</div>
-							<li><a href="preview.html">Delivery</a></li>
+				            <li><a href="preview.html">Delivery</a></li>
 							<li><a href="#">Checkout</a></li>
 							<li><a href="#">My Account</a></li>
 						</ul>
@@ -112,21 +105,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col span_2_of_3">
 				  <div class="contact-form">
 				  	<h2>Contact Us</h2>
-					    <form method="post" action="contact-post.html">
-					    	<div>
-						    	<span><label>UserName</label></span>
-						    	<span><input name="userName" type="text" class="textbox" ></span>
-						    </div>
-						    <div>
-						    	<span><label>Password</label></span>
-						    	<span><input name="userEmail" type="password" class="textbox"></span>
-						    </div>
-						  
-						  
-						   <div>
-						   		<span><input type="submit" value="Submit"  class="mybutton"></span>
-						  </div>
-					    </form>
+					  <form method="POST">
+						{% csrf_token %}
+						{{ register_form|crispy }}                    
+						<button class="btn btn-primary" type="submit">Register</button>
+					</form>
+					<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
 				  </div>
   				</div>
 				<div class="col span_1_of_3">
