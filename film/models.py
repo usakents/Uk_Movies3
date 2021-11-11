@@ -36,6 +36,7 @@ class Series(models.Model):
     serie_general=models.CharField(max_length=300,null=False)
     serie_VJ=models.CharField(max_length=200)
     serie_cost=models.CharField(max_length=200)
+    # serie_cost=models.CharField(max_length=200, verbose_name="Omuwendo")
   
     STATUS1_TYPE_CHOICES=[
       

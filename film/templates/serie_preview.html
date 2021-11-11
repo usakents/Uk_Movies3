@@ -146,7 +146,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<h2>Specials</h2>
 					 	<div class="special_movies">
 					 	   <div class="movie_poster">
-							<p>
+							<!-- <p>
 								<ul class="list-group">
 									{%if serie_detail.season_set.all %}
 									{% for season in serie_detail.season_set.all %}
@@ -162,6 +162,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									 {%endif%}  
 									
 								  </ul>
+							  </p> -->
+							  <p>
+								{%if serie_detail.season_set.all %} 
+								{% for season in serie_detail.season_set.all %}
+								<button class="accordion">{{ season.season_name }}</button>
+								{% for episode in season.episode_set.all %}
+								<div class="panel">
+								  <p>{{ episode.episode_name }}</p>
+								</div>
+								{% endfor %} 
+									{% endfor %}
+									{%else%}
+								  <div class="card-body">
+									<h4>No Data available</h4>
+									</div>
+									 {%endif%}  
 							  </p>
 					 		</div>	
 					 		
@@ -233,6 +249,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		});
 	</script>
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+
+	<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+		
+		for (i = 0; i < acc.length; i++) {
+		  acc[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			if (panel.style.display === "block") {
+			  panel.style.display = "none";
+			} else {
+			  panel.style.display = "block";
+			}
+		  });
+		}
+		</script>
+		
 </body>
 </html>
 
