@@ -9,11 +9,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE HTML>  
 <head>
-<title>Free Movies Store Website Template | Home :: w3layouts</title>
+<title>UK_MOVIES</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
 <link href="{% static 'css/slider.css' %}" rel="stylesheet" type="text/css" media="all"/>
+
+<link rel="stylesheet" href="{% static 'plugins/toastr/toastr.min.css' %}">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+
 <script type="text/javascript" src="{% static 'js/jquery-1.9.0.min.js' %}"></script> 
 <script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
@@ -40,6 +45,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						    <li><a href="#">Checkout</a></li>
 							<li><a href="preview.html">Delivery</a></li>
 							<li><a href="{% url 'login' %}">LogIn</a></li>
+							<li><a>Welcome:{{request.user.username}}</a></li>
 							<li><a href="{% url 'signup' %}">Register</a></li>
 						    <li><a href="{% url 'logout' %}">Logout</a></li>	
 						</ul>	
@@ -275,6 +281,42 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		});
 	</script>
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+
+	 <!-- Main content -->
+	 <section class="content">
+		<!-- Content Block -->
+		{% if messages %}
+		<ul class="messages">
+		  {% for message in messages %}
+		  <li{% if message.tags %} class="alert alert-{{message.tags }}"{% endif %}>
+		  {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+		  {{ message }}
+		  </li>
+		  {% endfor %}
+		</ul> 
+		{% endif %}
+		{% block content %}
+		{% endblock %}
+		<!-- /.Content Block -->
+	  </section>
+	  <!-- /.content -->
+
+	<!-- Bootstrap -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
+<!-- overlayScrollbars -->
+<script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+
+{% if messages %}
+{% for message in messages %}
+<script type=text/javascript>
+    toastr.options.progressBar = true;
+    toastr.{{ message.tags }}('{{ message }}')
+  </script>
+{% endfor %}
+{% endif %}
+
+
 </body>
 </html>
 
