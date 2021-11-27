@@ -5,6 +5,9 @@ from django.contrib.auth.models import User,auth
 
 from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required,user_passes_test
+from django.contrib.admin.views.decorators import staff_member_required
+
 
 
 from .form import NewUserForm
@@ -14,7 +17,7 @@ from .category_selector import(get_category,get_categ)
 from .carousel_selector import(get_carousel,get_carous)
 from.serie_selector import(get_series,get_serie,get_season_in_serie,get_episode_in_season,get_season)
 # Create your views here.
-
+@login_required(login_url='login')
 def manage_movie(request):
     get_moviys = get_movies()
     get_categorys=get_category()
@@ -36,7 +39,12 @@ def manage_movie(request):
         "get_seriys":get_seriys
     }
     return render (request,"index.html",context) 
-    
+
+# @staff_member_required(login_url='signup')
+# @login_required(login_url='login')
+@user_passes_test(lambda u: u.is_staff, login_url='signup')
+@user_passes_test(lambda u: u.is_superuser, login_url='signup')
+@user_passes_test(lambda u: u.groups.filter(name='YourGroupName').exists())     
 def manage_movie_detail(request,movie_id):
 
     movie_detail=get_movie(movie_id)
