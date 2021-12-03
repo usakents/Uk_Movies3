@@ -20,7 +20,7 @@ class Movies(models.Model):
         ('New','New'),
         ('Featured','Featured')
     ]
-    movie_status1=models.CharField(max_length=300,null=False,choices=STATUS1_TYPE_CHOICES)
+    movie_status1=models.CharField(max_length=300,null=False,choices=STATUS1_TYPE_CHOICES,default='New')
     STATUS2_TYPE_CHOICES=[
         ('Free','Free'),
         ('Paid','Paid')
@@ -29,6 +29,9 @@ class Movies(models.Model):
     movie_release_date=models.DateField(auto_now_add=True)
     movie_image=models.ImageField(upload_to='pic')
     movie_video=models.FileField(upload_to='m_videos')
+
+    def __str__(self):
+        return self.movie_title
 
 class Series(models.Model):
     serie_title=models.CharField(max_length=200,null=False)

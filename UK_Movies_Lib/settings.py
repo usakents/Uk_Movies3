@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'UK_Movies_Lib',
     'film',
     'crispy_forms',
+    'django_filters',
+    'widget_tweaks',
     
 ]
 

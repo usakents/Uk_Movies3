@@ -11,11 +11,13 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 
 from .form import NewUserForm
+from .filters import Movie_filter
 from.models import(Movies)
 from .movie_selector import(get_movie,get_movies)
 from .category_selector import(get_category,get_categ)
 from .carousel_selector import(get_carousel,get_carous)
 from.serie_selector import(get_series,get_serie,get_season_in_serie,get_episode_in_season,get_season)
+
 # Create your views here.
 @login_required(login_url='login')
 def manage_movie(request):
@@ -23,7 +25,11 @@ def manage_movie(request):
     get_categorys=get_category()
     get_carousels=get_carousel()
     get_seriys=get_series()
+
+    user_filter = Movie_filter(request.GET, queryset=get_moviys)
    
+
+    
     # Registeruser = Register_userForm()
     # if request.method == "POST":
     #     Registeruser = Register_userForm(request.POST,request.FILES)
@@ -33,7 +39,7 @@ def manage_movie(request):
     #     else:
     #         messages.warning(request,'invalid user input')    
     context={
-        "get_moviys":get_moviys,
+        "user_filter":user_filter,
         "get_categorys":get_categorys,
         "get_carousels":get_carousels,
         "get_seriys":get_seriys
@@ -44,7 +50,7 @@ def manage_movie(request):
 # @login_required(login_url='login')
 @user_passes_test(lambda u: u.is_staff, login_url='signup')
 @user_passes_test(lambda u: u.is_superuser, login_url='signup')
-@user_passes_test(lambda u: u.groups.filter(name='YourGroupName').exists())     
+@user_passes_test(lambda u: u.groups.filter(name='free').exists(),login_url='signup')     
 def manage_movie_detail(request,movie_id):
 
     movie_detail=get_movie(movie_id)
