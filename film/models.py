@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.files import ImageField
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -78,6 +80,22 @@ class Carousel(models.Model):
 class Category(models.Model):
     category_name=models.CharField(max_length=200)
     
+class Plan(models.Model):
+    plan_name=models.CharField(max_length=200)
+    plan_amount=models.CharField(max_length=100)
+
+class Subscription(models.Model):
+    user=models.ForeignKey(User,on_delete=CASCADE)
+    start_date=models.DateTimeField()
+    end_date=models.DateTimeField()
+    plan=models.ForeignKey(Plan,on_delete=CASCADE)
+    STATUS_TYPE_CHOICES=[
+        ('PAID','PAID'),
+        ('FREE','FREE')
+    ]
+    subscription_status=models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)    
+    
+
 
 
 

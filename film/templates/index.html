@@ -40,7 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="wrap">
 				<div class="nav_list">
 					<ul>
-						<li><a href="index.html">Home</a></li>
+						<li><a href="{% url 'movie' %}">Home</a></li>
 						<li><a href="contact.html">Sitemap</a></li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
@@ -114,7 +114,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						   <ul>
 						  	   <h3>Categories</h3>
 								 {% for get_categorys in get_categorys %}
-								  <li><a href="#">{{get_categorys.category_name}}</a></li>
+								  <li><a href="{% url 'search_items' %}">{{get_categorys.category_name}}</a></li>
 							     
 								  {% endfor %} 
 						  	 </ul>
@@ -302,7 +302,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 			 <div class="copy_right">
-				<p>Company Name © All rights Reseverd | Design by  <a href="http://w3layouts.com">W3Layouts</a> </p>
+				<p>Usakag fashions © All rights Reseverd | Design by  <a href="#">UK_MOVIES</a> </p>
 		   </div>			
         </div>
     </div>

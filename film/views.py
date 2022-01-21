@@ -44,7 +44,7 @@ def manage_movie(request):
         "get_carousels":get_carousels,
         "get_seriys":get_seriys
     }
-    return render (request,"index.html",context) 
+    return render (request,"index.html", context) 
 
 # @staff_member_required(login_url='signup')
 # @login_required(login_url='login')
@@ -80,6 +80,19 @@ def manage_episode_in_season(request,season_id):
     context={
         "episode_season":episode_season
     }
+
+def manage_search(request):
+    get_moviys = get_movies()
+   
+
+    user_filter = Movie_filter(request.GET, queryset=get_moviys)
+   
+  
+    context={
+        "user_filter":user_filter,
+       
+    }
+    return render (request,"srch.html", context) 
 
 # def register_request(request):
 # 	if request.method == "POST":
@@ -160,3 +173,4 @@ def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("login")
+

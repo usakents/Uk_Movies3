@@ -7,6 +7,7 @@ class Movie_filter(django_filters.FilterSet):
     end_date = DateFilter(field_name="movie_release_date",lookup_expr='lte')
     movie_title = django_filters.CharFilter(lookup_expr='icontains')
     movie_VJ = django_filters.CharFilter(lookup_expr='icontains')
+    movie_general = django_filters.CharFilter(lookup_expr='icontains')
     # movie_title = CharFilter(field_name="movie_title", lookup_expr='icontains')
     class Meta:
         model = Movies

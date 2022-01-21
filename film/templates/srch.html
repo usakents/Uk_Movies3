@@ -1,0 +1,111 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>UK_MOVIES</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+  <script type="text/javascript" src="{% static 'js/jquery-1.9.0.min.js' %}"></script> 
+  <script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery.nivo.slider.js' %}"></script>
+  <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
+</head>
+<body>
+
+  <div class="header">
+		<div class="headertop_desc">
+			<div class="wrap">
+				<div class="nav_list">
+					<ul>
+						<li><a href="{% url 'movie' %}">Home</a></li>
+						<li><a href="contact.html">Sitemap</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+					<div class="account_desc">
+						<ul>
+						    <li><a href="#">Checkout</a></li>
+							<li><a href="preview.html">Delivery</a></li>
+							<li><a href="{% url 'login' %}">LogIn</a></li>
+							<li><a>Welcome:{{request.user.username}}</a></li>
+							<li><a href="{% url 'signup' %}">Register</a></li>
+						    <li><a href="{% url 'logout' %}">Logout</a></li>	
+						</ul>	
+					</div>
+			</div>
+				<div class="clear"></div
+		</div>
+	</div>	
+
+  
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    {%if user_filter %}
+    <form method="get">
+      <div class="form-group">
+        
+        {% render_field user_filter.form.movie_title class="form-control" placeholder="Movie Title" %}
+        {% render_field user_filter.form.movie_general class="form-control" placeholder="Movie General" %}
+        {% render_field user_filter.form.movie_VJ class="form-control" placeholder="Movie VJ" %}
+        {% render_field user_filter.form.movie_status1 class="form-control" placeholder="movie status1" %}
+      </div>
+      <button type="button" class="btn btn-success">Search</button>
+      {{ field|add_class:'form-control' }}
+      {% for error in field.errors %}
+            <span class="help-block">{{ error }}</span>
+          {% endfor %}
+    </form>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="section group">
+				
+    {% for user_filter in user_filter.qs %}
+    <div class="grid_1_of_5 images_1_of_5">
+      <a href="{% url 'mov_detail' user_filter.id %}"><img src="{{ user_filter.movie_image.url }}" alt=""  width="100px" height="100px"/></a>
+       <h2><a href="{% url 'mov_detail' user_filter.id %}">{{user_filter.movie_title}}</a></h2>
+      <div class="price-details">
+           <div class="price-number">
+          <p><span class="rupees">{{user_filter.movie_cost}}</span></p>
+          </div>
+        <div class="price-number">
+          <p><span class="rupees">{{user_filter.movie_release_date}}</span></p>
+        </div>
+              <div class="add-cart">								
+              <h4><a href="{% url 'mov_detail' user_filter.id %}">{{user_filter.movie_VJ}}</a></h4>
+              </div>
+           <div class="clear"></div>
+      </div>
+                 
+    </div>
+    {% endfor %}
+  </div>
+  
+    {%else%}
+            <div class="card-body">
+                <h4>No Data available</h4>
+            </div>
+            {%endif%}
+</div>
+
+</body>
+</html>

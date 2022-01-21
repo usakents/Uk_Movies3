@@ -30,6 +30,7 @@ urlpatterns = [
     path('seri_details/<int:serie_id>/',views.manage_serie_detail,name='seri_detail'),
     #  path('season_details/<int:season>/',views.manage_season_in_serie,name='season_detail'),
     path('admin/', admin.site.urls),
+    path("Search_items",views.manage_search,name="search_items"),
     
     path("signup", views.signup, name= "signup"),
     path("login", views.login_request, name="login"),
