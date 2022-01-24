@@ -12,6 +12,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 from .form import NewUserForm
 from .filters import Movie_filter
+from .filters import  Movie_title_filter
+# from .filters import Serie_filter
+# from .filters import Serie_title_filter
 from.models import(Movies)
 from .movie_selector import(get_movie,get_movies)
 from .category_selector import(get_category,get_categ)
@@ -27,22 +30,21 @@ def manage_movie(request):
     get_seriys=get_series()
 
     user_filter = Movie_filter(request.GET, queryset=get_moviys)
-   
 
-    
-    # Registeruser = Register_userForm()
-    # if request.method == "POST":
-    #     Registeruser = Register_userForm(request.POST,request.FILES)
-    #     if Registeruser.is_valid():
-    #         Registeruser.save()
-    #         messages.success(request,'user registered successfully')
-    #     else:
-    #         messages.warning(request,'invalid user input')    
+    get_moviy_title_filter =  Movie_title_filter(request.GET, queryset=get_moviys)
+
+    # user_series_filter = Serie_filter(request.GET, queryset=get_seriys)
+    # get_seriy_title_filter =  Serie_title_filter(request.GET, queryset=get_seriys)
+   
+   
     context={
         "user_filter":user_filter,
         "get_categorys":get_categorys,
         "get_carousels":get_carousels,
-        "get_seriys":get_seriys
+        "get_seriys":get_seriys,
+        "get_moviy_title_filter":get_moviy_title_filter,
+        # "user_series_filter":user_series_filter,
+        # "get_seriy_title_filter":get_seriy_title_filter
     }
     return render (request,"index.html", context) 
 
@@ -92,7 +94,7 @@ def manage_search(request):
         "user_filter":user_filter,
        
     }
-    return render (request,"srch.html", context) 
+    return render (request,"search.html", context) 
 
 # def register_request(request):
 # 	if request.method == "POST":

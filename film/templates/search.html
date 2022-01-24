@@ -39,16 +39,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="wrap">
 				<div class="nav_list">
 					<ul>
-                        <li><a href="{% url 'movie' %}">UK MOVIES</a></li>
-						<li><a href="{% url 'movie' %}">Home</a></li>
-						<li><a href="contact.html">Sitemap</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="{% url 'movie' %}">UK MOVIES</a></li>
+						<li><a href="contact.html">About Us</a></li>
+						
 					</ul>
 				</div>
 					<div class="account_desc">
 						<ul>
-						    <li><a href="#">Checkout</a></li>
-							<li><a href="preview.html">Delivery</a></li>
+							<li><a href="preview.html">Subscribe</a></li>
 							<li><a href="{% url 'login' %}">LogIn</a></li>
 							<li><a>Welcome:{{request.user.username}}</a></li>
 							<li><a href="{% url 'signup' %}">Register</a></li>
@@ -74,29 +72,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           </div>
           {%if user_filter %}
           <form method="get">
-              <!-- {{ user_filter.form|crispy }} -->
-              <!-- {% render_field user_filter.form.movie_title class="form-control" placeholder="Movie Title" %}
-              {% render_field user_filter.form.movie_general class="form-control" placeholder="Movie General" %}
-              {% render_field user_filter.form.movie_VJ class="form-control" placeholder="Movie VJ" %}
-              {% render_field user_filter.form.movie_cost class="form-control" placeholder="movie cost" %}
-              {% render_field user_filter.form.movie_status1 class="form-control" placeholder="movie status1" %} -->
-              {% for field in user_filter.form.visible_fields %}
+              
+          {% for field in user_filter.form.visible_fields %}
         <div class="form-group">
-          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-          {{ field|add_class:'form-control' }}
-          {% for error in field.errors %}
-            <span class="help-block">{{ error }}</span>
-          {% endfor %}
-        </div>
-      {% endfor %}
-      <div class="form-group">
-          <button type="submit" class="btn btn-success">
-            <span class="glyphicon glyphicon-ok"></span> Search
-          </button>
-          
-        </div>
-              <!-- <button type="submit">Search</button> -->
-            </form>
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field|add_class:'form-control' }}
+        {% for error in field.errors %}
+          <span class="help-block">{{ error }}</span>
+        {% endfor %}
+      </div>
+    {% endfor %}
+	<div class="form-group">
+		<button type="submit" class="btn btn-success">
+		  <span class="glyphicon glyphicon-ok"></span> Search
+		</button>
+		
+	  </div>
+			<!-- <button type="submit">Search</button> -->
+		  </form>
               <div class="section group">
                   
                   {% for user_filter in user_filter.qs %}
@@ -159,62 +152,50 @@ License URL: http://creativecommons.org/licenses/by/3.0/
          </div>
     </div>
   </div>
-     <div class="footer">
-           <div class="wrap">	
-           <div class="section group">
-                  <div class="col_1_of_4 span_1_of_4">
-                          <h4>Information</h4>
-                          <ul>
-                          <li><a href="#">About Us</a></li>
-                          <li><a href="#">Customer Service</a></li>
-                          <li><a href="#">Advanced Search</a></li>
-                          <li><a href="#">Orders and Returns</a></li>
-                          <li><a href="contact.html">Contact Us</a></li>
-                          </ul>
-                      </div>
-                  <div class="col_1_of_4 span_1_of_4">
-                      <h4>Why buy from us</h4>
-                          <ul>
-                          <li><a href="#">About Us</a></li>
-                          <li><a href="#">Customer Service</a></li>
-                          <li><a href="#">Privacy Policy</a></li>
-                          <li><a href="contact.html">Site Map</a></li>
-                          <li><a href="#">Search Terms</a></li>
-                          </ul>
-                  </div>
-                  <div class="col_1_of_4 span_1_of_4">
-                      <h4>My account</h4>
-                          <ul>
-                              <li><a href="contact.html">Sign In</a></li>
-                              <li><a href="index.html">View Cart</a></li>
-                              <li><a href="#">My Wishlist</a></li>
-                              <li><a href="#">Track My Order</a></li>
-                              <li><a href="contact.html">Help</a></li>
-                          </ul>
-                  </div>
-                  <div class="col_1_of_4 span_1_of_4">
-                      <h4>Contact</h4>
-                          <ul>
-                              <li><span>0704544125</span></li>
-                              <li><span>0782411217</span></li>
-                          </ul>
-                          <div class="social-icons">
-                              <h4>Follow Us</h4>     
-                                   <ul>
-                                    <li><a href="#" target="_blank"><img src="{% static 'images/facebook.png' %}" alt="" /></a></li>
-                                    <li><a href="#" target="_blank"><img src="{% static 'images/twitter.png' %}" alt="" /></a></li>
-                                    <li><a href="#" target="_blank"><img src="{% static 'images/skype.png' %}" alt="" /> </a></li>
-                                    <li><a href="#" target="_blank"> <img src="{% static 'images/linkedin.png' %}" alt="" /></a></li>
-                                    <div class="clear"></div>
-                               </ul>
-                              </div>
-                  </div>
-              </div>
-               <div class="copy_right">
-                  <p>Company Name © All rights Reseverd | Design by  <a href="http://w3layouts.com">W3Layouts</a> </p>
-             </div>			
-          </div>
-      </div>
+  <div class="footer">
+   	  <div class="wrap">	
+	     <div class="section group">
+				<div class="col_1_of_4 span_1_of_4">
+						<h4>Information</h4>
+						<ul>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Customer Service</a></li>
+						<li><a href="#">Advanced Search</a></li>
+						<li><a href="#">Privacy Policy</a></li>
+						</ul>
+					</div>
+				
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>My account</h4>
+						<ul>
+							<li><a href="preview.html">Subscribe</a></li>
+							<li><a href="{% url 'login' %}">LogIn</a></li>
+							<li><a href="{% url 'signup' %}">Register</a></li>
+						    <li><a href="{% url 'logout' %}">Logout</a></li>	
+						</ul>
+				</div>
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>Contact</h4>
+						<ul>
+							<li><span>0704544125</span></li>
+							<li><span>0782411217</span></li>
+						</ul>
+						<div class="social-icons">
+							<h4>Follow Us</h4>     
+					   		  <ul>
+							      <li><a href="#" target="_blank"><img src="{% static 'images/facebook.png' %}" alt="" /></a></li>
+							      <li><a href="#" target="_blank"><img src="{% static 'images/twitter.png' %}" alt="" /></a></li>
+							      <li><a href="#" target="_blank"><img src="{% static 'images/skype.png' %}" alt="" /> </a></li>
+							      <li><a href="#" target="_blank"> <img src="{% static 'images/linkedin.png' %}" alt="" /></a></li>
+							      <div class="clear"></div>
+						     </ul>
+   	 					</div>
+				</div>
+			</div>
+			 <div class="copy_right">
+				<p>Usakag fashions © All rights Reseverd | Design by  <a href="#">UK_MOVIES</a> </p>
+		   </div>			
+        </div>
       <script type="text/javascript">
           $(document).ready(function() {			
               $().UItoTop({ easingType: 'easeOutQuart' });
