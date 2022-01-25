@@ -13,8 +13,8 @@ from django.contrib.admin.views.decorators import staff_member_required
 from .form import NewUserForm
 from .filters import Movie_filter
 from .filters import  Movie_title_filter
-# from .filters import Serie_filter
-# from .filters import Serie_title_filter
+from .filters import Serie_filter
+from .filters import Serie_title_filter
 from.models import(Movies)
 from .movie_selector import(get_movie,get_movies)
 from .category_selector import(get_category,get_categ)
@@ -33,8 +33,9 @@ def manage_movie(request):
 
     get_moviy_title_filter =  Movie_title_filter(request.GET, queryset=get_moviys)
 
-    # user_series_filter = Serie_filter(request.GET, queryset=get_seriys)
-    # get_seriy_title_filter =  Serie_title_filter(request.GET, queryset=get_seriys)
+    user_series_filter = Serie_filter(request.GET, queryset=get_seriys)
+    
+    get_serititle_filter =  Serie_title_filter(request.GET, queryset=get_seriys)
    
    
     context={
@@ -43,8 +44,8 @@ def manage_movie(request):
         "get_carousels":get_carousels,
         "get_seriys":get_seriys,
         "get_moviy_title_filter":get_moviy_title_filter,
-        # "user_series_filter":user_series_filter,
-        # "get_seriy_title_filter":get_seriy_title_filter
+        "user_series_filter":user_series_filter,
+        "get_serititle_filter":get_serititle_filter
     }
     return render (request,"index.html", context) 
 
@@ -95,6 +96,17 @@ def manage_search(request):
        
     }
     return render (request,"search.html", context) 
+
+def manage_serie_search(request):
+    get_seriys=get_series()
+
+    
+    user_series_filter = Serie_filter(request.GET, queryset=get_seriys)
+
+    context={
+         "user_series_filter":user_series_filter
+    }
+    return render (request,"serie_search.html", context) 
 
 # def register_request(request):
 # 	if request.method == "POST":

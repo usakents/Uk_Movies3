@@ -26,25 +26,25 @@ class Movie_title_filter(django_filters.FilterSet):
 
         fields = ['movie_title']
 
-# class Serie_filter(django_filters.FilterSet):
-#     serie_title = django_filters.CharFilter(lookup_expr='icontains')
-#     serie_VJ = django_filters.CharFilter(lookup_expr='icontains')
-#     serie_general = django_filters.CharFilter(lookup_expr='icontains')
+class Serie_filter(django_filters.FilterSet):
+    serie_title = django_filters.CharFilter(lookup_expr='icontains')
+    serie_VJ = django_filters.CharFilter(lookup_expr='icontains')
+    serie_general = django_filters.CharFilter(lookup_expr='icontains')
 
-#     class Meta:
-#         model = Series
+    class Meta:
+        model = Series
 
-#         fields = ['serie_title','serie_VJ','serie_general']
+        fields = ['serie_title','serie_VJ','serie_general']
      
 
 
-# class Serie_title_filter(django_filters.FilterSet):
-#     serie_title = django_filters.CharFilter(lookup_expr='icontains')
+class Serie_title_filter(django_filters.FilterSet):
+    serie_title = django_filters.CharFilter(lookup_expr='icontains')
 
-#     class Meta:
-#         model =  Series
+    class Meta:
+        model =  Series
 
-#         fields = ['serie_title']
+        fields = ['serie_title']
 
       
     
