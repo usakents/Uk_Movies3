@@ -33,6 +33,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         $('#slider').nivoSlider();
     });
     </script>
+<style>
+	.btn-group .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+}
+
+.btn-group .button:hover {
+  background-color: #3e8e41;
+}
+</style>
+
 </head>
 <body>
 	<div class="header">
@@ -71,12 +90,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</ul></div></p>
 						  </div>
 						  <div class="btn-group">
-							<button type="button" class="btn btn-success"><a href="{% url 'search_items' %}"><span class="glyphicon glyphicon-ok"></span>MOVIES</a></button>
-							<button type="button" class="btn btn-success"><a href="{% url 'search_serie_items' %}"><span class="glyphicon glyphicon-ok"></span>SERIES</a></button>
-							<button type="button" class="btn btn-success"><a href="#"><span class="glyphicon glyphicon-ok"></span>ISLAM</a></button>
+							<button class="button"><a href="{% url 'search_items' %}">MOVIES</a></button>
+							<button class="button"><a href="{% url 'search_serie_items' %}">SERIES</a></button>
+							<button class="button"><a href="#">ISLAM</a></button>
 						  </div>
 						 <div class="clear"></div>
-					</div>
+					</div>    
 						  <script type="text/javascript">
 								function DropDown(el) {
 									this.dd = el;
