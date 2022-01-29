@@ -37,7 +37,8 @@ urlpatterns = [
     path("signup", views.signup, name= "signup"),
     path("login", views.login_request, name="login"),
     path("logout", views.logout_request, name= "logout"),
-    path("Contact",views.contact_me,name="contact")
+    path("Contact",views.contact_me,name="contact"),
+    path("Sub_payment",views. Subscription_payment, name="sub_payment")
      
     
 ]

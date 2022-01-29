@@ -190,3 +190,6 @@ def logout_request(request):
 
 def contact_me(request):
  return render(request, 'contact.html')
+
+def Subscription_payment(request):
+ return render(request, 'subscription1.html')
