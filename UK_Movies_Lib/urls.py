@@ -19,6 +19,7 @@ from  django.conf import settings
 from  django.conf.urls.static import  static
 from film import views
 
+
 admin.site.site_header="UK_Movies_Lib project"
 admin.site.index_title="UK_Movies"
 admin.site.site_title="UK_Movies Ltd"
@@ -40,3 +41,4 @@ urlpatterns = [
     
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+

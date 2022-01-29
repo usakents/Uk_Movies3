@@ -21,27 +21,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
 	<div class="header">
-		 <div class="headertop_desc">
+		<div class="headertop_desc">
 			<div class="wrap">
 				<div class="nav_list">
 					<ul>
-						<li><a href="{% url 'movie' %}">Home</a></li>
-						<li><a href="contact.html">Sitemap</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="{% url 'movie' %}">UK MOVIES</a></li>
+						<li><a href="contact.html">About Us</a></li>
+						
 					</ul>
 				</div>
 					<div class="account_desc">
 						<ul>
-							<li><a href="contact.html">Register</a></li>
-							<li><a href="contact.html">Login</a></li>
-							<li><a href="preview.html">Delivery</a></li>
-							<li><a href="#">Checkout</a></li>
-							<li><a href="#">My Account</a></li>
-						</ul>
+							<li><a href="preview.html">Subscribe</a></li>
+							<li><a href="{% url 'login' %}">LogIn</a></li>
+							<li><a>Welcome:{{request.user.username}}</a></li>
+							<li><a href="{% url 'signup' %}">Register</a></li>
+						    <li><a href="{% url 'logout' %}">Logout</a></li>	
+						</ul>	
 					</div>
-				<div class="clear"></div>
 			</div>
-	  	</div>
+				<div class="clear"></div>
+		</div>
+	</div>	
   	  		<div class="wrap"> 
 				<div class="header_top">
 					<div class="logo">

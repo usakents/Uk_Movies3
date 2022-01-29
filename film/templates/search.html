@@ -119,36 +119,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   </div>
                   {%endif%}
                   
-                  
-              {%if get_seriys %}
-              <div class="content_bottom">
-              <div class="heading">
-              <h3>SERIES</h3>
-              </div>
-            </div>
-              <div class="section group">
-                  {% for get_seriys in get_seriys %}
-                  <div class="grid_1_of_5 images_1_of_5">
-                       <a href="{% url 'seri_detail' get_seriys.id %}"><img src="{{ get_seriys.serie_image.url }}" alt="" /></a>
-                       <h2><a href="preview.html">{{get_seriys.serie_title}}</a></h2>
-                      <div class="price-details">
-                         <div class="price-number">
-                              <p><span class="rupees">{{get_seriys.serie_cost}}</span></p>
-                          </div>
-                                     <div class="add-cart">								
-                                      <h4><a href="preview.html">{{get_seriys.serie_VJ}}</a></h4>
-                                   </div>
-                               <div class="clear"></div>
-                      </div>
-                       
-                  </div>
-                  {% endfor %}
-              </div>
-              {%else%}
-                  <div class="card-body">
-                      <h4>No Data available</h4>
-                  </div>
-                  {%endif%}
          </div>
     </div>
   </div>
