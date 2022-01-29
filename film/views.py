@@ -188,3 +188,5 @@ def logout_request(request):
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("login")
 
+def contact_me(request):
+ return render(request, 'contact.html')
