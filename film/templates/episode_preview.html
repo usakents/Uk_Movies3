@@ -25,7 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="wrap">
 				<div class="nav_list">
 					<ul>
-						<li><a href="{% url 'movie' %}">UK MOVIES</a></li>
+						<li><a href="{% url 'movie' %}">Home</a></li>
 						<li><a href="contact.html">About Us</a></li>
 						
 					</ul>
@@ -55,11 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<li>you have no items in your Shopping cart</li>
 								</ul></div></p>
 						  </div>
-							  <div class="search_box">
-					     		<form>
-					     			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
-					     		</form>
-					     	</div>
+							  
 						 <div class="clear"></div>
 					</div>
 						  <script type="text/javascript">
@@ -96,9 +92,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    <div class="main">
    	 <div class="wrap">
    	 	<div class="content_top">
-    		<div class="back-links">
-    		<p><a href="index.html">Home</a> &gt;&gt;&gt;&gt; <a href="#" class="active">English</a></p>
-    	    </div>
+    		<div class="heading">
+				<h3>{{ serie_detail.serie_title }}</h3>
+			</div>
     		<div class="clear"></div>
     	</div>
    	 	<div class="section group">     
@@ -107,121 +103,103 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="grid images_3_of_2">
 						<img src=" {{ serie_detail.serie_image.url }}" alt="" />
 				  </div>
-				<div class="desc span_3_of_2">
-					<h2>Wrath of the Titans </h2>
-					
-					<p>  <video
-						id="my-video"
-						class="video-js"
-						controls
-						preload="auto"
-						width="640"
-						height="264"
-						poster="MY_VIDEO_POSTER.jpg"
-						data-setup="{}"
-					  >
-						<source src="{{ movie_detail.movie_video.url }}" type="video/mp4" />
-						</video></p>
-					 
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>					
-					<div class="price">
-						<p>Price: <span>$500</span></p>
-					</div>
+				  <div class="desc span_3_of_2">
 					<div class="available">
-						<ul>
-						  <li><span>Model:</span> &nbsp; Model 1</li>
-						  <li><span>Shipping Weight:</span>&nbsp; 5lbs</li>
-						  <li><span>Units in Stock:</span>&nbsp; 566</li>
-					    </ul>
+						<p>
+							{%if serie_detail.season_set.all %} 
+							{% for season in serie_detail.season_set.all %}
+							<button class="accordion">{{ season.season_name }}</button>
+							{% for episode in season.episode_set.all %}
+							<div class="panel">
+							  <p>{{ episode.episode_name }}</p>
+							</div>
+							{% endfor %} 
+								{% endfor %}
+								{%else%}
+							  <div class="card-body">
+								<h4>No Data available</h4>
+								</div>
+								 {%endif%}  
+						  </p>
 					</div>
-				<div class="share-desc">
-					<div class="share">
-						<p>Number of units :</p><input class="text_box" type="text">				
-					</div>
-					<div class="button"><span><a href="#">Add to Cart</a></span></div>					
-					<div class="clear"></div>
-				</div>
-				 <div class="wish-list">
-				 	<ul>
-				 		<li class="wish"><a href="#">Add to Wishlist</a></li>
-				 	    <li class="compare"><a href="#">Add to Compare</a></li>
-				 	</ul>
-				 </div>
+				
+				
 			</div>
 			<div class="clear"></div>
 		  </div>
-		<div class="product_desc">	
-			 <h2>Details :</h2>
-			   <p><video src=""></video></p>
-	           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-	   </div>
+		
    </div>
-</div>
-        </div>
-   <div class="footer">
-   	  <div class="wrap">	
-	     <div class="section group">
-				<div class="col_1_of_4 span_1_of_4">
-						<h4>Information</h4>
-						<ul>
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Customer Service</a></li>
-						<li><a href="#">Advanced Search</a></li>
-						<li><a href="#">Orders and Returns</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
-						</ul>
-					</div>
-				<div class="col_1_of_4 span_1_of_4">
-					<h4>Why buy from us</h4>
-						<ul>
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Customer Service</a></li>
-						<li><a href="#">Privacy Policy</a></li>
-						<li><a href="contact.html">Site Map</a></li>
-						<li><a href="#">Search Terms</a></li>
-						</ul>
-				</div>
-				<div class="col_1_of_4 span_1_of_4">
-					<h4>My account</h4>
-						<ul>
-							<li><a href="contact.html">Sign In</a></li>
-							<li><a href="index.html">View Cart</a></li>
-							<li><a href="#">My Wishlist</a></li>
-							<li><a href="#">Track My Order</a></li>
-							<li><a href="contact.html">Help</a></li>
-						</ul>
-				</div>
-				<div class="col_1_of_4 span_1_of_4">
-					<h4>Contact</h4>
-						<ul>
-							<li><span>+91-123-456789</span></li>
-							<li><span>+00-123-000000</span></li>
-						</ul>
-						<div class="social-icons">
-							<h4>Follow Us</h4>   {% static 'images/linkedin.png' %}
-					   		  <ul>
-							      <li><a href="#" target="_blank"><img src="{% static 'images/facebook.png' %}" alt="" /></a></li>
-							      <li><a href="#" target="_blank"><img src="{% static 'images/twitter.png' %}" alt="" /></a></li>
-							      <li><a href="#" target="_blank"><img src="{% static 'images/skype.png' %}" alt="" /> </a></li>
-							      <li><a href="#" target="_blank"> <img src="{% static 'images/linkedin.png' %}" alt="" /></a></li>
-							      <div class="clear"></div>
-						     </ul>
-   	 					</div>
-				</div>
-			</div>
-			 <div class="copy_right">
-				<p>Company Name © All rights Reseverd | Design by  <a href="http://w3layouts.com">W3Layouts</a> </p>
-		   </div>			
-        </div>
-    </div>
-	<script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
-   <script type="text/javascript">
-		$(document).ready(function() {			
-			$().UItoTop({ easingType: 'easeOutQuart' });
-			
-		});
-	</script>
-    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+   		</div>
+         </div>
+		<div class="footer">
+			<div class="wrap">	
+			<div class="section group">
+				   <div class="col_1_of_4 span_1_of_4">
+						   <h4>Information</h4>
+						   <ul>
+						   <li><a href="{% url 'contact' %}">About Us</a></li>
+						   <li><a href="#">Customer Service</a></li>
+						   <li><a href="#">Advanced Search</a></li>
+						   <li><a href="#">Privacy Policy</a></li>
+						   </ul>
+					   </div>
+				   
+				   <div class="col_1_of_4 span_1_of_4">
+					   <h4>My account</h4>
+						   <ul>
+							   <li><a href="preview.html">Subscribe</a></li>
+							   <li><a href="{% url 'login' %}">LogIn</a></li>
+							   <li><a href="{% url 'signup' %}">Register</a></li>
+							   <li><a href="{% url 'logout' %}">Logout</a></li>	
+						   </ul>
+				   </div>
+				   <div class="col_1_of_4 span_1_of_4">
+					   <h4>Contact</h4>
+						   <ul>
+							   <li><span>0704544125</span></li>
+							   <li><span>0782411217</span></li>
+						   </ul>
+						   <div class="social-icons">
+							   <h4>Follow Us</h4>     
+									<ul>
+									 <li><a href="#" target="_blank"><img src="{% static 'images/facebook.png' %}" alt="" /></a></li>
+									 <li><a href="#" target="_blank"><img src="{% static 'images/twitter.png' %}" alt="" /></a></li>
+									 <li><a href="#" target="_blank"><img src="{% static 'images/skype.png' %}" alt="" /> </a></li>
+									 <li><a href="#" target="_blank"> <img src="{% static 'images/linkedin.png' %}" alt="" /></a></li>
+									 <div class="clear"></div>
+								</ul>
+							   </div>
+				   </div>
+			   </div>
+				<div class="copy_right">
+				   <p>Usakag fashions © All rights Reseverd | Design by  <a href="#">UK_MOVIES</a> </p>
+			  </div>			
+		   </div>
+		 <script type="text/javascript">
+			 $(document).ready(function() {			
+				 $().UItoTop({ easingType: 'easeOutQuart' });
+				 
+			 });
+		 </script>
+		 <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+
+	<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+		
+		for (i = 0; i < acc.length; i++) {
+		  acc[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			if (panel.style.display === "block") {
+			  panel.style.display = "none";
+			} else {
+			  panel.style.display = "block";
+			}
+		  });
+		}
+		</script>
+		
 </body>
 </html>
 
