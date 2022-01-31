@@ -138,7 +138,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col_1_of_4 span_1_of_4">
 					<h4>My account</h4>
 						<ul>
-							<li><a href="preview.html">Subscribe</a></li>
+							<li><a href="{% url 'sub_payment' %}">Subscribe</a></li>
 							<li><a href="{% url 'login' %}">LogIn</a></li>
 							<li><a href="{% url 'signup' %}">Register</a></li>
 						    <li><a href="{% url 'logout' %}">Logout</a></li>	
@@ -174,41 +174,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       </script>
       <a href="#" id="toTop"><span id="toTopHover"> </span></a>
   
-       <!-- Main content -->
-       <section class="content">
-          <!-- Content Block -->
-          {% if messages %}
-          <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="alert alert-{{message.tags }}"{% endif %}>
-            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
-            {{ message }}
-            </li>
-            {% endfor %}
-          </ul> 
-          {% endif %}
-          {% block content %}
-          {% endblock %}
-          <!-- /.Content Block -->
-        </section>
-        <!-- /.content -->
-  
-      <!-- Bootstrap -->
-  <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
-  <!-- overlayScrollbars -->
-  <script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
-  
-  {% if messages %}
-  {% for message in messages %}
-  <script type=text/javascript>
-      toastr.options.progressBar = true;
-      toastr.{{ message.tags }}('{{ message }}')
-    </script>
-  {% endfor %}
-  {% endif %}
-  
-  
+      
   </body>
   </html>
   
