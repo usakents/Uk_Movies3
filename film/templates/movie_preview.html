@@ -94,24 +94,22 @@
    	 	<div class="section group">     
 				<div class="cont-desc span_1_of_2">
 				  <div class="product-details">				
-					<div class="grid images_3_of_2">
-						<img src=" {{ movie_detail.movie_image.url }}" alt="" />
-				  </div>
-				<div class="desc span_3_of_2">
 					
-						<p>  <video
+				<div class="desc span_3_of_2">
+					<div class="embed-responsive embed-responsive-16by9"> 
+						<p> <video
 						id="my-video"
 						class="video-js"
 						controls
 						preload="auto"
-						width="640"
-						height="264"
-						poster="MY_VIDEO_POSTER.jpg"
+						width="320"
+						height="240"
+						poster="{{ movie_detail.movie_image.url }}"
 						data-setup="{}"
 					  >
 						<source src="{{ movie_detail.movie_video.url }}" type="video/mp4" />
 						</video></p>
-									
+					</div>		
 				 
 			</div>
 			<div class="clear"></div>
