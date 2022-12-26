@@ -22,7 +22,7 @@ from .carousel_selector import(get_carousel,get_carous)
 from.serie_selector import(get_series,get_serie,get_season_in_serie,get_episode_in_season,get_season)
 
 # Create your views here.
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def manage_movie(request):
     get_moviys = get_movies()
     get_categorys=get_category()
