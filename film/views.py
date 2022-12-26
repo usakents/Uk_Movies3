@@ -62,6 +62,9 @@ def manage_movie_detail(request,movie_id):
     }  
     return render(request,"movie_preview.html",context)
 
+@user_passes_test(lambda u: u.is_staff, login_url='sub_payment')
+@user_passes_test(lambda u: u.is_superuser, login_url='sub_payment')
+@user_passes_test(lambda u: u.groups.filter(name='free').exists(),login_url='sub_payment')
 def manage_serie_detail(request,serie_id):
     serie_detail=get_serie(serie_id)
     
