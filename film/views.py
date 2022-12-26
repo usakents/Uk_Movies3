@@ -51,9 +51,9 @@ def manage_movie(request):
 
 # @staff_member_required(login_url='signup')
 # @login_required(login_url='login')
-@user_passes_test(lambda u: u.is_staff, login_url='sub_payment')
-@user_passes_test(lambda u: u.is_superuser, login_url='sub_payment')
-@user_passes_test(lambda u: u.groups.filter(name='free').exists(),login_url='sub_payment')     
+# @user_passes_test(lambda u: u.is_staff, login_url='sub_payment')
+# @user_passes_test(lambda u: u.is_superuser, login_url='sub_payment')
+# @user_passes_test(lambda u: u.groups.filter(name='free').exists(),login_url='sub_payment')     
 def manage_movie_detail(request,movie_id):
 
     movie_detail=get_movie(movie_id)
