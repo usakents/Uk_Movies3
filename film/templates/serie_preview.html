@@ -42,14 +42,14 @@
 							<div class="accordion-item">
 							{% for season in serie_detail.season_set.all %}
 							  <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+								<button class="accordion-button btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
 									{{ season.season_name }}
 								</button>
 							  </h2>
 							  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
 								{% for episode in season.episode_set.all %}
 								<div class="accordion-body">
-								  <strong>{{ episode.episode_name }}</strong>
+								 <a href="#">{{ episode.episode_name }}</a>
 								</div>
 								{% endfor %} 
 							  </div>
