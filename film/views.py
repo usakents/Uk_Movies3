@@ -19,7 +19,8 @@ from.models import(Movies)
 from .movie_selector import(get_movie,get_movies)
 from .category_selector import(get_category,get_categ)
 from .carousel_selector import(get_carousel,get_carous)
-from.serie_selector import(get_series,get_serie,get_season_in_serie,get_episode_in_season,get_season)
+from .serie_selector import(get_series,get_serie,get_season_in_serie,get_episode_in_season,get_season)
+from .episode_selector import(get_episode,get_episodes)
 
 # Create your views here.
 # @login_required(login_url='login')
@@ -62,9 +63,17 @@ def manage_movie_detail(request,movie_id):
     }  
     return render(request,"movie_preview.html",context)
 
-@user_passes_test(lambda u: u.is_staff, login_url='sub_payment')
-@user_passes_test(lambda u: u.is_superuser, login_url='sub_payment')
-@user_passes_test(lambda u: u.groups.filter(name='free').exists(),login_url='sub_payment')
+def manage_episode_detail(request,episode_id):
+
+    episode_detail=get_episode(episode_id)
+    context={
+     "episode_detail":episode_detail
+    }  
+    return render(request,"episode_preview.html",context)
+
+# @user_passes_test(lambda u: u.is_staff, login_url='sub_payment')
+# @user_passes_test(lambda u: u.is_superuser, login_url='sub_payment')
+# @user_passes_test(lambda u: u.groups.filter(name='free').exists(),login_url='sub_payment')
 def manage_serie_detail(request,serie_id):
     serie_detail=get_serie(serie_id)
     
@@ -73,6 +82,7 @@ def manage_serie_detail(request,serie_id):
        
     }
     return render(request,"serie_preview.html",context)
+    
 def manage_season_in_serie(request,serie_id):
     serie = get_serie(serie_id)
     serie_seasons = get_season_in_serie(serie)
@@ -91,8 +101,8 @@ def manage_search(request):
     get_moviys = get_movies()
    
 
-    user_filter = Movie_filter(request.GET, queryset=get_moviys)
-   
+    user_filter = Movie_title_filter(request.GET, queryset=get_moviys)
+
   
     context={
         "user_filter":user_filter,
@@ -104,7 +114,7 @@ def manage_serie_search(request):
     get_seriys=get_series()
 
     
-    user_series_filter = Serie_filter(request.GET, queryset=get_seriys)
+    user_series_filter = Serie_title_filter(request.GET, queryset=get_seriys)
 
     context={
          "user_series_filter":user_series_filter

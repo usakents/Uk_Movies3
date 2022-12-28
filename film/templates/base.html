@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>  
+{% load static %}
+<head>
+<title>UK_MOVIES</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<link href="{% static 'css/slider.css' %}" rel="stylesheet" type="text/css" media="all"/>
+
+
+
+<script type="text/javascript" src="{% static 'js/jquery-1.9.0.min.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.nivo.slider.js' %}"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
+
+<style>
+	.btn-group .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+}
+
+.btn-group .button:hover {
+  background-color: #3e8e41;
+}
+</style>
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+	<div class="header">
+		<div class="headertop_desc">
+			<div class="wrap navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+				<div class="nav_list">
+					<ul>
+						<li><a href="{% url 'movie' %}">Home</a></li>
+						<li><a href="{% url 'contact' %}">About Us</a></li>
+						
+					</ul>
+				</div>
+				<div class="account_desc">
+					<ul>
+						<li><a href="{% url 'sub_payment' %}">Subscribe</a></li>
+						<li><a href="{% url 'login' %}">LogIn</a></li>
+						<li><a>Welcome:{{request.user.username}}</a></li>
+						<li><a href="{% url 'signup' %}">Register</a></li>
+						<li><a href="{% url 'logout' %}">Logout</a></li>	
+					</ul>	
+				</div>
+			</div>
+				<div class="clear"></div>
+		</div>
+	</div>
+    <div class="header_top">
+        <div class="logo">
+            <a href="{% url 'movie' %}"><img src="{% static 'images/Uk Logo.png' %}" alt="" /></a>
+        </div>
+            <div class="header_top_right">
+              
+              <div class="btn-group">
+                <button class="button"><a href="{% url 'search_items' %}">MOVIES</a></button>
+                <button class="button"><a href="{% url 'search_serie_items' %}">SERIES</a></button>
+                <button class="button"><a href="#">ISLAM</a></button>
+              </div>
+             <div class="clear"></div>
+        </div>    
+              
+        <div class="clear"></div>
+       </div> 	
+
+
+    {% block content %}
+
+
+    {% endblock content %}
+    
+
+    <div class="footer">
+        <div class="wrap">	
+        <div class="section group">
+               <div class="col_1_of_4 span_1_of_4">
+                       <h4>Information</h4>
+                       <ul>
+                       <li><a href="{% url 'contact' %}">About Us</a></li>
+                       <li><a href="#">Customer Service</a></li>
+                       <li><a href="{% url 'search_serie_items' %}">Advanced Search</a></li>
+                       <li><a href="#">Privacy Policy</a></li>
+                       </ul>
+                   </div>
+               
+               <div class="col_1_of_4 span_1_of_4">
+                   <h4>My account</h4>
+                       <ul>
+                           <li><a href="{% url 'sub_payment' %}">Subscribe</a></li>
+                           <li><a href="{% url 'login' %}">LogIn</a></li>
+                           <li><a href="{% url 'signup' %}">Register</a></li>
+                           <li><a href="{% url 'logout' %}">Logout</a></li>	
+                       </ul>
+               </div>
+               <div class="col_1_of_4 span_1_of_4">
+                   <h4>Contact</h4>
+                       <ul>
+                           <li><span>0704544125</span></li>
+                           <li><span>0782411217</span></li>
+                       </ul>
+                       <div class="social-icons">
+                           <h4>Follow Us</h4>     
+                                <ul>
+                                 <li><a href="#" target="_blank"><img src="{% static 'images/facebook.png' %}" alt="" /></a></li>
+                                 <li><a href="#" target="_blank"><img src="{% static 'images/twitter.png' %}" alt="" /></a></li>
+                                 <li><a href="#" target="_blank"><img src="{% static 'images/skype.png' %}" alt="" /> </a></li>
+                                 <li><a href="#" target="_blank"> <img src="{% static 'images/linkedin.png' %}" alt="" /></a></li>
+                                 <div class="clear"></div>
+                            </ul>
+                           </div>
+               </div>
+           </div>
+            <div class="copy_right">
+               <p>ukmoviesug © All rights Reseverd | Design by  <a href="#">Usak designs</a> </p>
+          </div>			
+       </div>
+   </div>
+   <script type="text/javascript">
+       $(document).ready(function() {			
+           $().UItoTop({ easingType: 'easeOutQuart' });
+           
+       });
+   </script>
+   <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+
+</body>
+</html>
