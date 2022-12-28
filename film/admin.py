@@ -1,6 +1,6 @@
 from django.contrib import admin
-from django.db import models
-from .models import Register_users,Movies,Series,Carousel,Category,Season,Episode
+from .models import *
+
 # Register your models here.
 
 admin.site.register(Register_users)
