@@ -49,7 +49,7 @@
 							  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
 								{% for episode in season.episode_set.all %}
 								<div class="accordion-body">
-								 <a href="#">{{ episode.episode_name }}</a>
+								 <a href="{% url 'epis_detail' episode.id %}">{{ episode.episode_name }}</a>
 								</div>
 								{% endfor %} 
 							  </div>

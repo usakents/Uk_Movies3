@@ -9,6 +9,7 @@ urlpatterns = [
     #  path('season_details/<int:season>/',views.manage_season_in_serie,name='season_detail'),
     path("Search_items",views.manage_search,name="search_items"),
     path("Search_serie_items",views.manage_serie_search,name="search_serie_items"),
+    path('epis_details/<int:episode_id>/',views.manage_episode_detail,name='epis_detail'),
     
     path("signup", views.signup, name= "signup"),
     path("login", views.login_request, name="login"),
