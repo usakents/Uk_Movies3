@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- {% load crispy_forms_tags %}
+{% load widget_tweaks %} -->
+
+{% block content %}
+
+    <div class="main">
+        <div class="wrap">
+        <div class="content">
+          <div class="content_top">
+              <div class="heading">
+              <h3>ACTION MOVIES</h3>
+              </div>   
+          </div>
+		  <br>
+          
+	<div class="form-group">
+		<button type="submit" class="btn btn-success">
+		  <span class="glyphicon glyphicon-ok"></span> Search
+		</button>
+		
+	  </div>
+			<!-- <button type="submit">Search</button> -->
+		  </form>
+              <div class="section group">
+                  
+                  {% for action_filter in action_filter %}
+                  <div class="grid_1_of_5 images_1_of_5">
+                      <a href="{% url 'mov_detail' action_filter.id %}"><img src="{{ user_filter.movie_image.url }}" alt=""  width="100px" height="100px"/></a>
+                       <h2><a href="{% url 'mov_detail' action_filter.id %}">{{user_filter.movie_title}}</a></h2>
+                      <div class="price-details">
+                         <div class="price-number">
+                              <!-- <p><span class="rupees">{{user_filter.movie_cost}}</span></p> -->
+							  <p><span class="rupees">COST : FREE</span></p>
+                          </div>
+						  <br>
+                          <!-- <div class="price-number">
+                              <p><span class="rupees">{{user_filter.movie_release_date}}</span></p>
+                          </div> -->
+                                     <div class="add-cart">								
+                                      <h4><a href="{% url 'mov_detail' action_filter.id %}">{{action_filter.movie_VJ}}</a></h4>
+                                   </div>
+                               <div class="clear"></div>
+                      </div>
+                                           
+                  </div>
+                  {% endfor %}
+              </div>
+                  
+         </div>
+    </div>
+  </div>
+  {% endblock content %}

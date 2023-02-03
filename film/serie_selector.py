@@ -14,4 +14,7 @@ def get_season(season_id):
    
 def get_episode_in_season(season):
     return Episode.objects.filter(season=season)
+    
+def get_episode(episode_id):
+    return Episode.objects.get(pk=episode_id)
    

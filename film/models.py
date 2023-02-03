@@ -15,7 +15,15 @@ class Register_users(models.Model):
 class Movies(models.Model):
     movie_title=models.CharField(max_length=200,null=False)
     movie_actor=models.CharField(max_length=200,null=False)
-    movie_general=models.CharField(max_length=300,null=False)
+    CATEGORY_CHOICES=[
+        ('ACTION','ACTION'),
+        ('HORROR','HORROR'),
+        ('SCIENCE FRICTION','SCIENCE FRICTION'),
+        ('LOVE STORY','LOVE STORY'),
+        ('INDIAN','INDIAN'),
+        ('COMEDY','COMEDY')
+    ]
+    movie_genre=models.CharField(max_length=300,null=False,choices=CATEGORY_CHOICES,default='ACTION')
     movie_VJ=models.CharField(max_length=200)
     movie_cost=models.CharField(max_length=300)
     STATUS1_TYPE_CHOICES=[

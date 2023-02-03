@@ -3,6 +3,8 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 
+import requests
+
 from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required,user_passes_test
@@ -19,8 +21,7 @@ from.models import(Movies)
 from .movie_selector import(get_movie,get_movies)
 from .category_selector import(get_category,get_categ)
 from .carousel_selector import(get_carousel,get_carous)
-from .serie_selector import(get_series,get_serie,get_season_in_serie,get_episode_in_season,get_season)
-from .episode_selector import(get_episode,get_episodes)
+from .serie_selector import(get_series,get_serie,get_season_in_serie,get_episode_in_season,get_season,get_episode)
 
 # Create your views here.
 # @login_required(login_url='login')
@@ -52,9 +53,9 @@ def manage_movie(request):
 
 # @staff_member_required(login_url='signup')
 # @login_required(login_url='login')
-# @user_passes_test(lambda u: u.is_staff, login_url='sub_payment')
-# @user_passes_test(lambda u: u.is_superuser, login_url='sub_payment')
-# @user_passes_test(lambda u: u.groups.filter(name='free').exists(),login_url='sub_payment')     
+@user_passes_test(lambda u: u.is_staff, login_url='sub_payment')
+@user_passes_test(lambda u: u.is_superuser, login_url='sub_payment')
+@user_passes_test(lambda u: u.groups.filter(name='free').exists(),login_url='sub_payment')     
 def manage_movie_detail(request,movie_id):
 
     movie_detail=get_movie(movie_id)
@@ -63,6 +64,10 @@ def manage_movie_detail(request,movie_id):
     }  
     return render(request,"movie_preview.html",context)
 
+
+@user_passes_test(lambda u: u.is_staff, login_url='sub_payment')
+@user_passes_test(lambda u: u.is_superuser, login_url='sub_payment')
+@user_passes_test(lambda u: u.groups.filter(name='free').exists(),login_url='sub_payment')  
 def manage_episode_detail(request,episode_id):
 
     episode_detail=get_episode(episode_id)
@@ -204,5 +209,20 @@ def logout_request(request):
 def contact_me(request):
  return render(request, 'contact.html')
 
+
+# Genre/catagories
+
+def get_action(request):
+    action_filter = Movies.objects.filter(movie_genre = 'ACTION')
+    context={
+        "action_filter":action_filter,
+    }
+    return render(request, 'actions_only.html', context)
+
+
 def Subscription_payment(request):
- return render(request, 'subscription1.html')
+    # response=response.get('https://my.jpesa.com/api.php?username=kagolo.usama&password=YourPassword&IS_GET=3&command=vsms').json()
+    # context={
+    #     "response":response
+    # }
+    return render(request,'pay.html')

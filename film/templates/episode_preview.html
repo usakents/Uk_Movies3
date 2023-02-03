@@ -7,7 +7,7 @@
 	<div class="wrap">
 		<div class="content_top">
 		<div class="heading">
-			<h3>{{epis_detail.season.season_name}}{{ epis_detail.episode_name }}</h3>
+			<h3>{{episode_detail.season.season_name}}  ::  {{ episode_detail.episode_name }}</h3>
 		</div>  
 		<div class="clear"></div>
 			
@@ -25,10 +25,10 @@
 					preload="auto"
 					width="320"
 					height="240"
-					poster="{{ epis_detail.season.serie.serie_image.url }}"
+					poster="{{ episode_detail.season.serie.serie_image.url }}"
 					data-setup="{}"
 				  >
-					<source src="{{ epis_detail.episode_video.url }}" type="video/mp4" />
+					<source src="{{ episode_detail.episode_video.url }}" type="video/mp4" />
 					</video></p>
 				</div>		
 			 

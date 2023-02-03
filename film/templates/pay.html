@@ -1,0 +1,23 @@
+{% load static %}
+
+<center>
+    <div class="logo">
+        <a href="{% url 'movie' %}"><img src="{% static 'images/ukmovies1.png' %}" alt="" /></a>
+    </div>
+    <br>
+    <br>
+    <h3>SUBSCRIBE NOW!</h3>
+<form name="JPesa" method="post" action="https://my.jpesa.com/?dad=xp">
+    <input type="hidden" name="ownerid" value="kagolo.usama"  />
+    <input type="hidden" name="description" value="Credit Note" />
+    <input type="hidden" name="return" value="https://my.jpesa.com" />
+    <input type="hidden" name="cancel" value="https://my.jpesa.com" />
+    <select name="cur">
+      <option value="UGX">UGX</option>
+      <option value="KES">KES</option>
+      <option value="USD">USD</option>
+    </select>
+    <input name="amount" type="text" size="15" value="500" />
+    <input type="submit" name="pay" value="Make Payment" />
+    </form>
+</center>
