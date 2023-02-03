@@ -221,8 +221,4 @@ def get_action(request):
 
 
 def Subscription_payment(request):
-    # response=response.get('https://my.jpesa.com/api.php?username=kagolo.usama&password=YourPassword&IS_GET=3&command=vsms').json()
-    # context={
-    #     "response":response
-    # }
     return render(request,'pay.html')
